@@ -11,21 +11,26 @@
  *	the Process data type for the Process variable 'p'
  **********************************************************/
 Process_Queue::Process_Queue(){
- 
+	pN = NULL;
+	first = NULL;
+	last = NULL;
+	pQueueSize = 0;
 };
 
 /**********************************************************
  * Process Queue Overloaded Constructor for user
  **********************************************************/
-Process_Queue::Process_Queue(const Process &inP){
-
+Process_Queue::Process_Queue(const Process_Node &inPN){
+	pN = inPN;
+	pQueueSize = 1;
 };
 
 /**********************************************************
  * Process Queue Copy Constructor
  **********************************************************/
 Process_Queue::Process_Queue(const Process_Queue &inPQ){
-
+	this->p = inPQ->p;
+	this->first
 };
 
 /**********************************************************
@@ -65,7 +70,7 @@ Process Process_Queue::read(void){
  * Process Queue Push
  *   Push a process to the end of the queue
  **********************************************************/
-void Process_Queue::push(const Process &inP){
+void Process_Queue::push(const Process_Node &inPN){
 
 };
 
@@ -100,3 +105,21 @@ int Process_Queue::getPQueueSize(void){
 bool Process_Queue::isEmpty(void){
 
 };
+
+/**********************************************************
+* Process Queue test Process Queue Size
+*	 Test the size of the Process Queue
+**********************************************************/
+bool Process_Queue::testPQueueSize(void){
+
+}
+
+/**********************************************************
+ * Process Queue fix Process Queue Size
+ *	 In the case that the queue size is wrong then fix
+ *		the size. This will be invoked by the function is
+ *		isEmpty() ONLY.
+ **********************************************************/
+void Process_Queue::fixPQueueSize(void){
+
+}

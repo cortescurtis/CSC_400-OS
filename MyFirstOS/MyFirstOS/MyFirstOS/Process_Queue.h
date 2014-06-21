@@ -4,17 +4,18 @@
 ******************************************************************************/
 #pragma once
 
-#include <iostream>
-#include "stdio.h"
+#include "ProcessNode.h"
 #include "Process.h" // I need to have access to the Process.h file so I can
                      // see the API
+
+
 
 class Process_Queue {
 public:
 
 	// Constructors & Destructors
 	Process_Queue(void); // Default Constructor
-	Process_Queue(const Process &inP); // Overloaded Constructor for user
+	Process_Queue(const Process_Node &inPN); // Overloaded Constructor for user
 	Process_Queue(const Process_Queue &inPQ); // Copy Constructor
 	Process_Queue & operator=(const Process_Queue &inPQ); // Assignment Operator
 	~Process_Queue(void); // Destructor
@@ -26,7 +27,7 @@ public:
 						// removing it from the queue
 
 	// Other Queue Functions
-	void push(const Process &inP); // push a process to the end of the queue
+	void push(const Process_Node &inPN); // push a process to the end of the queue
 
 protected:
 
@@ -37,13 +38,13 @@ protected:
 
 	// Others
 	bool isEmpty(void); // get whether or not the queue is empty
+	bool testPQueueSize(void); // Test to make sure the size of the queue is correct
+	void fixPQueueSize(void); // Fix the queue size if not correct
 
 private:
-	Process  p;
-	Process *first;
-	Process *next;
-	Process *last;
-	bool     empty;
-	int      pQueueSize;
+	Process_Node  pN;
+	Process_Node *first;
+	Process_Node *last;
+	int          pQueueSize;
 };
 
