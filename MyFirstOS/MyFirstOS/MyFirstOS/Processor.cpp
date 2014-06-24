@@ -16,21 +16,24 @@ Processor::~Processor(){
 
 void Processor::run(Process& p, Scheduler& s){
 
-	cout << "Received Process " << p->get_ID() << "with priority "<< p->get_Priority <<endl;
+	cout << "Received Process " << p.getID() << "with priority "<< p.getPriority() <<endl;
 	
 	//tell the processor about it's current process
-	set_Cur_Proc_Priority(p->getPriority);
-	set_Cur_Proc_ID(p->getID);
+	set_Cur_Proc_Priority(p.getPriority());
+	set_Cur_Proc_ID(p.getID());
 
 	//running the process
-	p->execute();
+	p.run();
+	set_Cur_Proc_ID(NULL);
+	set_Cur_Proc_Priority(NULL);
 	set_Status_Idle();
 
 	//Notify the scheduler that the cpu is done with the current Process???
 	cout << "Waiting for new Processes." << endl;
-	s->cpu_Idle(p); 
+	//We decided this wasn't needed on 6/21/2014 -RM
+	//s->cpu_Idle(p); 
 }
-/* Not sure if we going to need this now.
+/* Not sure if we going to need this now. -RM
 void Processor::timer(){
 	if (get_Cur_Proc_Priority() == 0){
 		cout << "highest Priority of 0 so 20seconds of processing time" << endl;
